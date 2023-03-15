@@ -1,0 +1,30 @@
+
+
+<h1>Bienvenido a tu carrito</h1>
+
+<h2>Productos en carrito</h2>
+{{#if productos.length}}
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Imagen</th>
+        <th>descripcion</th>
+    </tr>
+    {{#each productos}}
+    <tr>
+        <td>{{title}}</td>
+        <td>{{price}}</td>
+        <td>
+            <img class="img"
+                 src="{{thumbnail}}" />
+        </td>
+        <td>{{description}}</td>
+    </tr>
+    {{/each}}
+</table>
+{{else}}
+<h3>No hay productos agregados!</h3>
+{{/if}}
+
+<a href="/api/fin">Finalizar compra</a>
