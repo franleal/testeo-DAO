@@ -8,12 +8,13 @@ class productsDao {
             const newProduct = new product(prodAdd)
             return await newProduct.save()
         }
-        catch {
-            logger.error('Error al agregar el producto')
+        catch (error) {
+            console.log(error)
         }
         
     }
 
+   
     async getAll() {
         try {
             const buscados = await product.find().lean()
@@ -36,6 +37,20 @@ class productsDao {
         }
 
         return [buscado]
+    }
+
+    async updateProduct(id, newProduct){
+        const productUpdated = await product.findOneAndUpdate({ id: id }, { $set: newProduct })
+        return asDto(productUpdated)
+    }
+
+    async deleteById(idParaBorrar) {
+        const deleted = await product.findOneAndDelete({ id: idParaBorrar })
+        return asDto(deleted)
+    }
+
+    async deleteAll() {
+        await product.deleteMany({})
     }
 }
 

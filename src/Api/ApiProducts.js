@@ -15,6 +15,8 @@ class productsApi {
         }
     }
 
+
+
     async serchId(id) {
         try {
             const productosId = await this.productDao.getById(id)
@@ -38,17 +40,30 @@ class productsApi {
        
     }
 
-    async delete(id) {
-        if (id) {
-            await this.productDao.deleteById(id);
+   
+    async delete(){
+        try {
+            const deleteAll = await this.productDao.deleteAll();
+            return deleteAll
         }
-        else {
-            await this.productDao.deleteAll();
+        catch (error) {
+            console.log(error)
         }
     }
 
+    async deleteById(id) {
+        try {
+            const deleteId = await this.productDao.deleteById(id);
+            return deleteId
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+
     async replace(id, prodParaReemplazar) {
-        const prodReplaced = await this.productDao.updateById(id, prodParaReemplazar);
+        const prodReplaced = await this.productDao.updateProduct(id, prodParaReemplazar);
         return prodReplaced;
     }
 }

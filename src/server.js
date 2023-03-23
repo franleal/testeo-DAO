@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors')
 const exphbs = require('express-handlebars');
 const passport = require("passport");
 const path = require('path')
@@ -23,7 +24,8 @@ app.engine('.hbs',exphbs.engine({
 app.set("view engine", ".hbs");
 
 //Midlewares---------------------------------------
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({ extended: false }))
+app.use(cors())
 
 app.use(session({
     secret:'secret',

@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\DAOs"
+    "\\src"
   ],
-  "SelectedNode": "\\src\\DAOs\\productsDao.js",
+  "SelectedNode": "\\src\\server.js",
   "PreviewInSolutionExplorer": false
 }
